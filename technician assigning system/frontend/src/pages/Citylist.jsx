@@ -2,38 +2,41 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Citylist = () => {
-  const [cities, setCities] = useState([]);
+  const [technicians, setTechnicians] = useState([]);
 
   useEffect(() => {
-    const fetchCities = async () => {
+    const fetchTechnicians = async () => {
       try {
-        const res = await axios.get('http://localhost:6500/api/zones');
-        setCities(res.data);
+        const res = await axios.get('http://localhost:6500/api/technicians');
+        setTechnicians(res.data);
       } catch (err) {
-        console.error('Error fetching cities:', err);
+        console.error('Error fetching technicians:', err);
       }
     };
 
-    fetchCities();
+    fetchTechnicians();
   }, []);
 
   return (
     <div className='container-fluid'>
-      <h3 className='mb-3'>Technician Assigning</h3>
+      <h3 className='mb-4 text-center text-primary'>All Registered Technicians</h3>
       <div className='row'>
-        {cities.map((zone) => (
-          <div className='col-md-3 mb-4' key={zone._id}>
+        {technicians.map((tech) => (
+          <div className='col-md-4 mb-4' key={tech._id}>
             <div className='card h-100 shadow-sm'>
               <img
-                src={`http://localhost:6500/uploads${zone.image}`}
-                alt={zone.title}
+                src={`http://localhost:6500/uploads/${tech.image}`}
+                alt={tech.name}
                 className='card-img-top'
-                style={{ objectFit: 'cover', height: '200px' }}
+                style={{ objectFit: 'cover', height: '250px' }}
               />
               <div className='card-body'>
-                <h5 className='card-title'>{zone.title}</h5>
-                <p className='card-text'>{zone.desc}</p>
-                <span className='badge bg-dark'>{zone.status}</span>
+                <h5 className='card-title'>{tech.name}</h5>
+                <p className='card-text'>
+                  <strong>Department:</strong> {tech.department}<br />
+                  <strong>Experience:</strong> {tech.experience} years<br />
+                  <strong>Phone:</strong> {tech.phone}
+                </p>
               </div>
             </div>
           </div>

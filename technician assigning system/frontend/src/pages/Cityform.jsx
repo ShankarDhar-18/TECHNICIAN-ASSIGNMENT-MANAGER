@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const Cityform = () => {
   const [formdata, setFormdata] = useState({
-    title: '',
-    desc: '',
-    status: ''
+    name: "",
+    phone: "",
+    experience: "",
   });
 
   const [image, setImage] = useState(null);
@@ -13,7 +13,7 @@ const Cityform = () => {
   const handleChange = (e) => {
     setFormdata((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -25,28 +25,28 @@ const Cityform = () => {
     e.preventDefault();
 
     if (!image) {
-      alert('Please upload an image.');
+      alert("Please upload an image.");
       return;
     }
 
     const data = new FormData();
-    data.append('title', formdata.title);
-    data.append('desc', formdata.desc);
-    data.append('status', formdata.status);
-    data.append('image', image);
+    data.append("title", formdata.title);
+    data.append("desc", formdata.desc);
+    data.append("status", formdata.status);
+    data.append("image", image);
 
     try {
-      const res = await axios.post('http://localhost:6500/api/zones', data);
-      console.log('Uploaded:', res.data);
-      alert('City added successfully');
+      const res = await axios.post("http://localhost:6500/api/zones", data);
+      console.log("Uploaded:", res.data);
+      alert("Technician added successfully");
 
       // Reset form
-      setFormdata({ title: '', desc: '', status: '' });
+      setFormdata({ Name: "", phone: "", experience: "" });
       setImage(null);
       e.target.reset(); // Note: works only if ref applied to form or direct DOM access
     } catch (err) {
       console.error(err);
-      alert('Error submitting data');
+      alert("Error submitting data");
     }
   };
 
@@ -82,12 +82,7 @@ const Cityform = () => {
         />
         <br />
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImage}
-          required
-        />
+        <input type="file" accept="image/*" onChange={handleImage} required />
         <br />
 
         <button className="btn btn-danger" type="submit">

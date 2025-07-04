@@ -62,7 +62,7 @@ const Cart = () => {
     try {
       const res = await axios.post('http://localhost:6500/api/orders', order);
       if (res?.data) {
-        alert(`✅ Order placed successfully using ${mode}!\n📞 Owner: 9876543210`);
+        alert(`✅ Order placed successfully using ${mode}!\n📞 Owner phone no:9674383094`);
         setCart([]);
         setAddress('');
         setPhone('');

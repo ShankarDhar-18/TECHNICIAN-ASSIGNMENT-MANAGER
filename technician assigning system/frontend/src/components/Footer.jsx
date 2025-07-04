@@ -35,20 +35,41 @@ const Footer = () => {
           {/* Column 3: Social */}
           <div className="col-md-4 mb-4">
             <h5 className="font-weight-bold">Connect With Us</h5>
-            <a href="#" className="text-white mr-3">
+            <a
+              href="https://www.facebook.com/profile.php?id=100091668936015" // Replace with your real Facebook page
+              className="text-white mr-3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-facebook fa-lg"></i>
             </a>
-            <a href="#" className="text-white mr-3">
-              <i className="fab fa-twitter fa-lg"></i>
-            </a>
-            <a href="#" className="text-white mr-3">
+            <a
+              href="https://www.instagram.com/sd_tech.2025?igsh=ODA5NnZwanJ2bDl4" // Replace with your real Instagram profile
+              className="text-white mr-3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-instagram fa-lg"></i>
             </a>
-            <a href="#" className="text-white">
+            <a
+              href="https://www.twitter.com"
+              className="text-white mr-3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-twitter fa-lg"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              className="text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-linkedin fa-lg"></i>
             </a>
           </div>
         </div>
+
         <hr style={{ borderColor: 'rgba(255,255,255,0.1)' }} />
         <div className="text-center">
           <small>&copy; {new Date().getFullYear()} SD Technician System. All rights reserved.</small>
