@@ -2,41 +2,38 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Citylist = () => {
-  const [technicians, setTechnicians] = useState([]);
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    const fetchTechnicians = async () => {
+    const fetchCities = async () => {
       try {
-        const res = await axios.get('http://localhost:6500/api/technicians');
-        setTechnicians(res.data);
+        const res = await axios.get('http://localhost:6500/api/zones');
+        setCities(res.data);
       } catch (err) {
-        console.error('Error fetching technicians:', err);
+        console.error('Error fetching cities:', err);
       }
     };
 
-    fetchTechnicians();
+    fetchCities();
   }, []);
 
   return (
     <div className='container-fluid'>
-      <h3 className='mb-4 text-center text-primary'>All Registered Technicians</h3>
+      <h3 className='mb-3'>Technician Assigning</h3>
       <div className='row'>
-        {technicians.map((tech) => (
-          <div className='col-md-4 mb-4' key={tech._id}>
+        {cities.map((zone) => (
+          <div className='col-md-3 mb-4' key={zone._id}>
             <div className='card h-100 shadow-sm'>
               <img
-                src={`http://localhost:6500/uploads/${tech.image}`}
-                alt={tech.name}
+                src={http://localhost:6500/uploads${zone.image}}
+                alt={zone.title}
                 className='card-img-top'
-                style={{ objectFit: 'cover', height: '250px' }}
+                style={{ objectFit: 'cover', height: '200px' }}
               />
               <div className='card-body'>
-                <h5 className='card-title'>{tech.name}</h5>
-                <p className='card-text'>
-                  <strong>Department:</strong> {tech.department}<br />
-                  <strong>Experience:</strong> {tech.experience} years<br />
-                  <strong>Phone:</strong> {tech.phone}
-                </p>
+                <h5 className='card-title'>{zone.title}</h5>
+                <p className='card-text'>{zone.desc}</p>
+                <span className='badge bg-dark'>{zone.status}</span>
               </div>
             </div>
           </div>
