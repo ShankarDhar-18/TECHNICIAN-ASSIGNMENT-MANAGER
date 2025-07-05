@@ -25,7 +25,7 @@ const Citylist = () => {
           <div className='col-md-3 mb-4' key={zone._id}>
             <div className='card h-100 shadow-sm'>
               <img
-                src={http://localhost:6500/uploads${zone.image}}
+                src={`http://localhost:6500/uploads/${zone.image}`}
                 alt={zone.title}
                 className='card-img-top'
                 style={{ objectFit: 'cover', height: '200px' }}
